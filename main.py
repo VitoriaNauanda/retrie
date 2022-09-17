@@ -1,59 +1,78 @@
 class TrieNode:
     def __init__(self):
-        self.children = {}
-        self.endOfWord = False
+        self.filhos = {}
+        self.fimDaPalavra = False
+
+    # def showWord(self, palavra: str) -> str:
+    #     palavraFormada = []
+    #     for c in palavra:
+    #         palavraFormada.append(c)
+    #     return palavraFormada
+    
 
 class Trie:
     def __init__(self):
-        self.root = TrieNode()
+        self.raiz = TrieNode()
 
-    def insert(self, word: str) -> None:
-        cur = self.root
+    # def showWord(self, palavra):
+    #     palavraFormada = []
+    #     for c in palavra:
+    #         palavraFormada.append(c)
+    #     return palavraFormada
 
-        for c in word:
-            if c not in cur.children:
-                cur.children[c] = TrieNode() 
-            cur = cur.children[c]
-        cur.endOfWord = True
+    def inserir(self, palavra: str) -> None:
+        atual = self.raiz
 
-    '''
-    Insert a node value in the tree
-
-    @param  string $word Node value 
-    '''
-
-    def search(self, word: str) -> bool:
-        cur = self.root
-
-        for c in word:
-            if c not in cur.children:
-                return False
-            cur = cur.children[c]
-        return cur.endOfWord
+        for c in palavra: #para c dentro da string informada
+            if c not in atual.filhos: #se c nao tiver substring da raiz
+                atual.filhos[c] = TrieNode() #instancia um novo TrieNode para subarvore da raiz
+            atual = atual.filhos[c] #caso faça parte da palavra o nó atual adiciona c em seus subnós 
+        atual.fimDaPalavra = True #caso chegue na folha digo que a palavra acabou
+        print("entrou no inserir")
+    
 
     '''
-    Search a node value in the tree
+    Inserir o valor de um nó na árvore
 
-    @param  string $prefix Node value 
+    @param  string $palavra valor de um nó 
+    '''
+
+    def busca(self, palavra: str) -> bool:
+        atual = self.raiz
+
+        for c in palavra: #para c dentro da string informada
+            if c not in atual.filhos: #se c nao for filho da raiz
+                return False #nao encontrou a palavra 
+            atual = atual.filhos[c] #caso pertença a subarvore, percorre ela
+        return atual.fimDaPalavra
+
+    '''
+    Procura o valor de um nó na árvore
+
+    @param  string $prefix Valor do nó 
     '''
 
     def startsWith(self, prefix: str) -> bool:
-        cur = self.root
+        atual = self.raiz
 
         for c in prefix:
-            if c not in cur.children:
+            if c not in atual.filhos:
                 return False
-            cur = cur.children[c]
+            atual = atual.filhos[c]
         return True
 
     '''
-    Check if a root node starts with $prefix value
+    Checa se o nó raíz começa com o valor $prefixo
 
     @param  string $prefix Node value 
     '''
 
+
 trie = Trie()
 
-print(trie.insert('a'))
-print(trie.search('a'))
-print(trie.startsWith('a'))
+print(trie.inserir('abacate'))
+print(trie.inserir('almofada'))
+print(trie.busca('abacate'))
+print(trie.busca('almofada'))
+# print(trie.showWord('treino'))
+# print(trie.startsWith('a'))

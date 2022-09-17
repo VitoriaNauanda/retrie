@@ -1,58 +1,59 @@
-//comecei a passar pra js mas tava com sono
-class TrieNode{
-    constructor(){
-        this.children = {};
-        this.endOfWord = false;
-    }
-}
+/**
+ * Initialize your data structure here.
+ */
+ var Trie = function() {
+    this.root = {};
+};
 
-class Trie{
-    constructor(){
-        this.root = TrieNode();
+/**
+ * Inserts a word into the trie. 
+ * @param {string} word
+ * @return {void}
+ */
+Trie.prototype.insert = function(word) {
+    let node = this.root;
+    for(let letter of word) {
+        if (node[letter] === undefined) node[letter] = {};
+        node = node[letter]
     }
-    insert( word){
-        var cur = self.root;
-    }
-    for(let c=1; c<=word.length; c++{
-        if (!cur.children){
-            cur.children[c] = TrieNode();
+    node.isEnd = true;
+};
+
+/**
+ * Returns if the word is in the trie. 
+ * @param {string} word
+ * @return {boolean}
+ */
+Trie.prototype.search = function(word) {
+    let node = this.root
+    for(let letter of word) {
+        // check if current letter is in the node
+        if(!node[letter]) {
+            return false;
+        } else {
+            node = node[letter];
         }
-        cur = cur.children[c]
     }
-    cur.endOfWord = true
-    search()
-}
-/*
-class Trie:
-    def __init__(self):
-        self.root = TrieNode()
 
-    def insert(self, word: str) -> None:
-        cur = self.root
+    return node && node.isEnd === true;
+};
 
-        for c in word:
-            if c not in cur.children:
-                cur.children[c] = TrieNode() 
-            cur = cur.children[c]
-        cur.endOfWord = True
+/**
+ * Returns if there is any word in the trie that starts with the given prefix. 
+ * @param {string} prefix
+ * @return {boolean}
+ */
+Trie.prototype.startsWith = function(prefix) {
+    let node = this.root;
+    for(let letter of prefix) {
+        if(!node[letter]) {
+            return false;
+        } else {
+            node = node[letter];
+        }
+    }
+    return true;
+};
 
-    def search(self, word: str) -> bool:
-        cur = self.root
-
-        for c in word:
-            if c not in cur.children:
-                return False
-            cur = cur.children[c]
-        return cur.endOfWord
-
-    def startsWith(self, prefix: str) -> bool:
-        cur = self.root
-
-        for c in prefix:
-            if c not in cur.childre:
-                return False
-            cur = cur.children[c]
-        return True
-
-trie = Trie()
-*/
+var trie = new Trie;
+trie.insert("aunt");
