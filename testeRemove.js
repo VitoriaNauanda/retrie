@@ -85,51 +85,51 @@ function isVazio(raiz)
 }
 
 /**
- * Esta é uma função responsável por remover a chave informada na árvore trie, caso 
- * exista.
+ * Esta é uma função recursiva responsável por remover a chave informada na árvore trie, 
+ * caso exista.
  *  
  * @param {TrieNode} raiz obrigatório instância da classe TrieNode
  * @param {string} chave obrigatório chave (palavra) de valor do alfabeto a ser buscado
- * @param {int} profundidade obrigatório chave (palavra) de valor do alfabeto a ser buscado
+ * @param {int} profundidade obrigatório valor da profundidade do nó 
+ * buscado
  */
 function remover(raiz,chave,profundidade)
 {
-	// Funcao recursiva para deletar a chave informada a trie
+	cont = 0
 	// Se a arvore estiver vazia
-    cont = 0
-		if (raiz == null)
-			return null;
+	if (raiz == null)
+		return null;
 
-		// Se o ultimo caractere da chave estiver sendo processado 
-		if (profundidade == chave.length) {
+	// Se o ultimo caractere da chave estiver sendo processado 
+	if (profundidade == chave.length) {
 
-			// Não será mais fim da palavra após a remoção da chave informada
-			if (raiz.fimDaPalavra)
-				raiz.fimDaPalavra = false;
+		// Não será mais fim da palavra após a remoção da chave informada
+		if (raiz.fimDaPalavra)
+			raiz.fimDaPalavra = false;
 
-			// Se a chave informada não for prefixo de alguma outra palavra 
-			if (isVazio(raiz)) {
-				raiz = null;
-			}
-
-			return raiz;
-		}
-
-		//Se nao for o ultimo caractere percorre o filho, percorre pelo filho obtido usando o valor ASCII
-		let index = chave[profundidade].charCodeAt(0) - 'a'.charCodeAt(0);
-		raiz.filhos[index] =
-			remover(raiz.filhos[index], chave, profundidade + 1);
-
-        //Caso a raiz nao tenha nenhum filho (seu unico filho foi
-        //deletado), e não é o fim de outra palavra.
-		
-		if (isVazio(raiz) && raiz.fimDaPalavra == false){
+		// Se a chave informada não for prefixo de alguma outra palavra 
+		if (isVazio(raiz)) {
 			raiz = null;
 		}
-        //removendo recursivamente cada chave node
-        console.log(`${chave[cont]} removida`)
-        cont++
-		return raiz; //`${chave} removida`;//
+
+		return raiz;
+	}
+
+	//Se nao for o ultimo caractere percorre o filho, percorre pelo filho obtido usando o valor ASCII
+	let index = chave[profundidade].charCodeAt(0) - 'a'.charCodeAt(0);
+	raiz.filhos[index] =
+		remover(raiz.filhos[index], chave, profundidade + 1);
+
+	//Caso a raiz nao tenha nenhum filho (seu unico filho foi
+	//deletado), e não é o fim de outra palavra.
+	
+	if (isVazio(raiz) && raiz.fimDaPalavra == false){
+		raiz = null;
+	}
+	//removendo recursivamente cada chave node
+	console.log(`${chave[cont]} removida`)
+	cont++
+	return raiz; //`${chave} removida`;//
 }
 
 // Input utilizando o range do alfabeto (de a - z)
