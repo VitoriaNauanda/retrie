@@ -153,10 +153,16 @@ function remover(raiz,chave,profundidade)
 	// console.log(`caracter ${chave[cont]} removido`)
 	// cont++
 
-	if(TrieNode.arrayValue.length >= TrieNode.contador){
-		let indice = TrieNode.arrayValue.value.indexOf(TrieNode.contador-1);
-		TrieNode.arrayValue.value.splice(indice, 1);
+	if(TrieNode.arrayValue.value.length >= TrieNode.contador){
+		console.log('entoru a')
+		console.log(`contador ${TrieNode.contador}`)
+		let indice = TrieNode.arrayValue.key.indexOf(chave);
+		console.log(indice-1)
 		TrieNode.arrayValue.key.splice(indice, 1);
+		TrieNode.arrayValue.value.splice(indice, 1);
+
+		// TrieNode.copiaArrayValue.key.splice(indice, 1);
+		// TrieNode.copiaArrayValue.value.splice(indice, 1);
 	}
 
 	return raiz; //`${chave} removida`;//
@@ -184,7 +190,8 @@ for (let i = 0; i < tamanho; i++)
 
 inserir(raiz, "reginaldo");
 
-remover(raiz, "qualquer", 0);
+remover(raiz, "resposta", 0);
+remover(raiz, "reginaldo", 0);
 
 	
 	
@@ -201,7 +208,5 @@ console.log(buscar(raiz, "garota"))
 for(let c=0; c<TrieNode.arrayValue.key.length; c++){
 	console.log(`Key:${TrieNode.arrayValue.key[c]} Value:${TrieNode.arrayValue.value[c]}\n`)
 }
-
-
 raiz.destructor();//desalocando memória
 delete raiz; //desalocando memória
