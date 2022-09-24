@@ -127,16 +127,16 @@ function remover(raiz,chave,profundidade)
 		raiz = null;
 	}
 	//removendo recursivamente cada chave node
-	console.log(`${chave[cont]} removida`)
+	console.log(`caracter ${chave[cont]} removido`)
 	cont++
 	return raiz; //`${chave} removida`;//
 }
 
 // Input utilizando o range do alfabeto (de a - z)
-// e em minusculas para funcionar o ASCII and lower case)
-let chaves = [ "the", "a", "there",
-				"resposta", "any", "by",
-				"bye", "their", "heroi", "aviao" ];
+// e em minusculas para funcionar o ASCII )
+let chaves = [ "teste", "a", "casa",
+				"resposta", "qualquer", "by",
+				"adeus", "heroi", "aviao" ];
 let n = chaves.length; // tamanho das chaves
 
 let raiz = new TrieNode();
