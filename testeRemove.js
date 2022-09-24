@@ -21,10 +21,11 @@ class TrieNode
 }
 
 // Se não tiver presente, insere a chave na trie 
-	// Se a chave é um prefixo da trie, apenas marca o nó folha 
+// Se a chave é um prefixo da trie, apenas marca o nó folha 
 
 /**
- * 
+ * Esta é uma função que insere a chave informada na árvore trie.
+ *  
  * @param {TrieNode} raiz obrigatório instância da classe TrieNode
  * @param {string} chave obrigatório chave (palavra) de valor do alfabeto a ser inserida
  */
@@ -32,15 +33,17 @@ function inserir(raiz,chave)
 {
 	let caminhar = raiz;
 
+		//validação usando valores ASCII para as chaves do alfabeto
 		for (let i = 0; i < chave.length; i++) {
 			let index = chave[i].charCodeAt(0) - 'a'.charCodeAt(0);
+			//se a raiz nao tiver filhos, adicionar a chave informada no indice dos filhos
 			if (caminhar.filhos[index] == null)
 				caminhar.filhos[index] = new TrieNode();
 
 			caminhar = caminhar.filhos[index];
 		}
 
-		//marca o ultimo no como folha = fim da palavra 
+		//marca o ultimo no folha como fim da palavra 
 		caminhar.fimDaPalavra = true;
 }
 
