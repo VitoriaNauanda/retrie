@@ -18,6 +18,10 @@ class TrieNode
 		this.filhos=new Array(TAMANHO_ALFABETO);
 		this.fimDaPalavra=false;
 	}
+	destructor()
+	{
+		delete this.filhos;
+	}
 }
 
 // Se não tiver presente, insere a chave na trie 
@@ -140,34 +144,19 @@ let chaves = [ "teste", "a", "casa",
 let n = chaves.length; // tamanho das chaves
 
 let raiz = new TrieNode();
-
 // Construindo a trie
 for (let i = 0; i < n; i++)
-	inserir(raiz, chaves[i]);
+inserir(raiz, chaves[i]);
 
 // buscar por chaves diferentes
-// if(buscar(raiz, "the"))
-// 	console.log("Yes");
-// else
-// 	console.log("No");
 
-// if(buscar(raiz, "these"))
-// 	console.log("Yes");
-// else
-// 	console.log("No");
-
-// remover(raiz, "aviao", 0);
-
-// if(buscar(raiz, "heroi"))
-// 	console.log("Yes");
-// else
-// 	console.log("No");
 
 // console.log(remover(raiz, "heroi", 0))
 console.log(buscar(raiz, "heroi"))
 console.log(buscar(raiz, "aviao"))
 console.log(buscar(raiz, "heri"))
 
+raiz.destructor();
 delete raiz; //desalocando memória
 
 
