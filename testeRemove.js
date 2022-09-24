@@ -2,11 +2,17 @@
 
 const TAMANHO_ALFABETO = 26;
 
-// Iniciando a Classe TrieNode
+/**
+ * @class TrieNode possui os atributos fimDaPalavra que é a tag utilizada nos nós, informando caso seu conjunto de nós formem uma palavra ou não, é true em palavras identificadas caso seu nó folha seja = true.
+ * 
+ * @this Array filhos   		Array com o tamanho do alfabeto utilizado nos nós.
+ * @this bool fimDaPalavra		Identificador da palavra formada, é atribuído nos nós 
+ * 								folhas é verdadeiro caso retorne uma palavra.
+ */
+
 class TrieNode
 {
-    //construtor padrão com array do tamanho do alfabeto e
-    //fim da palavra por padrão falso
+    //construtor padrão com array do tamanho do alfabeto e fim da palavra por padrão falso
 	constructor()
 	{
 		this.filhos=new Array(TAMANHO_ALFABETO);
@@ -16,6 +22,12 @@ class TrieNode
 
 // Se não tiver presente, insere a chave na trie 
 	// Se a chave é um prefixo da trie, apenas marca o nó folha 
+
+/**
+ * 
+ * @param {*} raiz		Instancia da @class TrieNode
+ * @param {*} key 		Chave (palavra) de valor do alfabeto a ser inserida
+ */
 function inserir(raiz,key)
 {
 	let caminhar = raiz;
