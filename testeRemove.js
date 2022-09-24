@@ -73,8 +73,7 @@ function buscar(raiz,chave)
 /**
  * Esta é uma função que retorna true se a raíz não tiver filhos, senão false.
  *  
- * @param {TrieNode} raiz obrigatório instância da classe TrieNode
- * @param {string} chave obrigatório chave (palavra) de valor do alfabeto a ser buscado
+ * @param {TrieNode} raiz obrigatório instância da classe TrieNode.
  */
 function isVazio(raiz)
 {
@@ -85,16 +84,24 @@ function isVazio(raiz)
 		return true;
 }
 
-// Funcao recursiva para deletar a chave informada a trie
-function remover(raiz,chave,depth)
+/**
+ * Esta é uma função responsável por remover a chave informada na árvore trie, caso 
+ * exista.
+ *  
+ * @param {TrieNode} raiz obrigatório instância da classe TrieNode
+ * @param {string} chave obrigatório chave (palavra) de valor do alfabeto a ser buscado
+ * @param {int} profundidade obrigatório chave (palavra) de valor do alfabeto a ser buscado
+ */
+function remover(raiz,chave,profundidade)
 {
+	// Funcao recursiva para deletar a chave informada a trie
 	// Se a arvore estiver vazia
     cont = 0
 		if (raiz == null)
 			return null;
 
 		// Se o ultimo caractere da chave estiver sendo processado 
-		if (depth == chave.length) {
+		if (profundidade == chave.length) {
 
 			// Não será mais fim da palavra após a remoção da chave informada
 			if (raiz.fimDaPalavra)
@@ -109,9 +116,9 @@ function remover(raiz,chave,depth)
 		}
 
 		//Se nao for o ultimo caractere percorre o filho, percorre pelo filho obtido usando o valor ASCII
-		let index = chave[depth].charCodeAt(0) - 'a'.charCodeAt(0);
+		let index = chave[profundidade].charCodeAt(0) - 'a'.charCodeAt(0);
 		raiz.filhos[index] =
-			remover(raiz.filhos[index], chave, depth + 1);
+			remover(raiz.filhos[index], chave, profundidade + 1);
 
         //Caso a raiz nao tenha nenhum filho (seu unico filho foi
         //deletado), e não é o fim de outra palavra.
