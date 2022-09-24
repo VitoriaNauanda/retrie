@@ -12,6 +12,12 @@ const TAMANHO_ALFABETO = 26;
 
 class TrieNode
 {
+	static contador = 0;
+	static arrayValue = {
+		key: [],
+		value: []
+	};
+
     //construtor padrão com array do tamanho do alfabeto e fim da palavra por padrão falso
 	constructor()
 	{
@@ -49,6 +55,10 @@ function inserir(raiz,chave)
 
 		//marca o ultimo no folha como fim da palavra 
 		caminhar.fimDaPalavra = true;
+	TrieNode.arrayValue.value.push(TrieNode.contador);
+	TrieNode.arrayValue.key.push(chave);
+	// console.log(TrieNode.contador)
+	TrieNode.contador ++;
 }
 
 /**
@@ -155,18 +165,28 @@ for (let i = 0; i < tamanho; i++)
 
 
 
-inserir(raiz, "garota");
+// inserir(raiz, "garota");
 
-remover(raiz, "garota", 0);
+// remover(raiz, "garota", 0);
 
 	
 	
 // buscar por chaves diferentes
-console.log(buscar(raiz, "heroi"))
-console.log(buscar(raiz, "aviao"))
+// console.log(buscar(raiz, "heroi"))
+// console.log(buscar(raiz, "aviao"))
 console.log(buscar(raiz, "garota"))
+
+
+
+
+for(let c=0; c<TrieNode.arrayValue.key.length; c++){
+	console.log(`Key:${TrieNode.arrayValue.key[c]} Value:${TrieNode.arrayValue.value[c]}\n`)
+}
+
+
+
+
 
 
 raiz.destructor();//desalocando memória
 delete raiz; //desalocando memória
-
