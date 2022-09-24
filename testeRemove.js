@@ -143,6 +143,12 @@ function remover(raiz,chave,profundidade)
 	//removendo recursivamente cada chave node
 	console.log(`caracter ${chave[cont]} removido`)
 	cont++
+	indice = TrieNode.arrayValue.value.indexOf(TrieNode.contador);
+	console.log(`indice ${indice}`);
+	// TrieNode.arrayValue.value.splice(TrieNode.contador);
+	// TrieNode.arrayValue.key.push(chave);
+	// // console.log(TrieNode.contador)
+	// TrieNode.contador ++;
 	return raiz; //`${chave} removida`;//
 }
 
@@ -183,9 +189,18 @@ for(let c=0; c<TrieNode.arrayValue.key.length; c++){
 	console.log(`Key:${TrieNode.arrayValue.key[c]} Value:${TrieNode.arrayValue.value[c]}\n`)
 }
 
+// TrieNode.arrayValue.key.push(chave);
+// console.log(TrieNode.contador)
 
 
-
+indice = TrieNode.arrayValue.value.indexOf(TrieNode.contador-1);
+TrieNode.arrayValue.value.splice(indice, 1);
+TrieNode.arrayValue.key.splice(indice, 1);
+// console.log(`indice ${indice}`);
+console.log('\n--------- MOSTRAR RESULTAO KEY VALUE APÓS REMOVER ULTIMO VALOR ------------\n')
+for(let c=0; c<TrieNode.arrayValue.key.length; c++){
+	console.log(`Key:${TrieNode.arrayValue.key[c]} Value:${TrieNode.arrayValue.value[c]}\n`)
+}
 
 
 raiz.destructor();//desalocando memória
