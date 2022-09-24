@@ -47,11 +47,18 @@ function inserir(raiz,chave)
 		caminhar.fimDaPalavra = true;
 }
 
-//busca retorna true caso a chave esteja presente na trie 
+/**
+ * Esta é uma função que busca a chave informada na árvore trie.
+ *  
+ * @param {TrieNode} raiz obrigatório instância da classe TrieNode
+ * @param {string} chave obrigatório chave (palavra) de valor do alfabeto a ser buscado
+ */
 function buscar(raiz,chave)
 {
+	//busca retorna true caso a chave esteja presente na trie 
 	let caminhar = raiz;
-
+		
+		// Se nao for o ultimo caractere, recorre pelos filhos obtidos usando os valores ASCII
 		for (let i = 0; i < chave.length; i++) {
 			let index = chave[i].charCodeAt(0) - 'a'.charCodeAt(0);
 			if (caminhar.filhos[index] == null)
@@ -63,9 +70,15 @@ function buscar(raiz,chave)
 		return `Palavra ${chave} encontrada`;//(caminhar != null && caminhar.fimDaPalavra);
 }
 
-// Retorna true se a raiz nao tiver filhos, senao false 
+/**
+ * Esta é uma função que retorna true se a raíz não tiver filhos, senão false.
+ *  
+ * @param {TrieNode} raiz obrigatório instância da classe TrieNode
+ * @param {string} chave obrigatório chave (palavra) de valor do alfabeto a ser buscado
+ */
 function isVazio(raiz)
 {
+	// Retorna true se a raiz nao tiver filhos, senao false 
 	for (let i = 0; i < TAMANHO_ALFABETO; i++)
 			if (raiz.filhos[i] != null)
 				return false;
