@@ -14,9 +14,8 @@ class TrieNode
 	}
 }
 
-// Se não tiver presente, insere a chave na trie If not present, inserts key into trie
-	// Se a chave é um prefixo da trie, apenas marca o nó folha If the key is prefix of trie node, just
-	// marks leaf node
+// Se não tiver presente, insere a chave na trie 
+	// Se a chave é um prefixo da trie, apenas marca o nó folha 
 function inserir(raiz,key)
 {
 	let caminhar = raiz;
@@ -33,8 +32,7 @@ function inserir(raiz,key)
 		caminhar.fimDaPalavra = true;
 }
 
-//busca retorna true caso a chave esteja presente na trie Returns true if key presents in trie, else
-	// false
+//busca retorna true caso a chave esteja presente na trie 
 function buscar(raiz,key)
 {
 	let caminhar = raiz;
@@ -50,7 +48,7 @@ function buscar(raiz,key)
 		return `Palavra ${key} encontrada`;//(caminhar != null && caminhar.fimDaPalavra);
 }
 
-// Returns true if raiz has no filhos, else false
+// Retorna true se a raiz nao tiver filhos, senao false 
 function isVazio(raiz)
 {
 	for (let i = 0; i < TAMANHO_ALFABETO; i++)
@@ -59,23 +57,22 @@ function isVazio(raiz)
 		return true;
 }
 
-// Recursive function to delete a key from given Trie
+// Funcao recursiva para deletar a chave informada a trie
 function remover(raiz,key,depth)
 {
-	// Se a arvore estiver vaiaIf tree is empty
+	// Se a arvore estiver vazia
     cont = 0
 		if (raiz == null)
 			return null;
 
-		// Se o ultimo caractere da chave estiver sendo processado If last character of key is being processed
+		// Se o ultimo caractere da chave estiver sendo processado 
 		if (depth == key.length) {
 
-			// Não será mais fim da palavra após a remoção da chave informadaThis node is no more end of word after
-			// removal of given key
+			// Não será mais fim da palavra após a remoção da chave informada
 			if (raiz.fimDaPalavra)
 				raiz.fimDaPalavra = false;
 
-			// Se a chave informada não for prefixo de alguma outra palavra If given is not prefix of any other word
+			// Se a chave informada não for prefixo de alguma outra palavra 
 			if (isVazio(raiz)) {
 				raiz = null;
 			}
@@ -83,16 +80,14 @@ function remover(raiz,key,depth)
 			return raiz;
 		}
 
-		//Se nao for o ultimo caractere percorre o filho, percorre pelo filho obtido usando o valor ASCII,  If not last character, recur for the child
-		// obtained using ASCII value
+		//Se nao for o ultimo caractere percorre o filho, percorre pelo filho obtido usando o valor ASCII
 		let index = key[depth].charCodeAt(0) - 'a'.charCodeAt(0);
 		raiz.filhos[index] =
 			remover(raiz.filhos[index], key, depth + 1);
 
         //Caso a raiz nao tenha nenhum filho (seu unico filho foi
         //deletado), e não é o fim de outra palavra.
-		// If raiz does not have any child (its only child got
-		// deleted), and it is not end of another word.
+		
 		if (isVazio(raiz) && raiz.fimDaPalavra == false){
 			raiz = null;
 		}
@@ -102,8 +97,7 @@ function remover(raiz,key,depth)
 		return raiz; //`${key} removida`;//
 }
 
-// Driver
-// Input utilizando o range do alfabeto (de a - z)Input chaves (use only 'a' through 'z'
+// Input utilizando o range do alfabeto (de a - z)
 // e em minusculas para funcionar o ASCII and lower case)
 let chaves = [ "the", "a", "there",
 				"resposta", "any", "by",
