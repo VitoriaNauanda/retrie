@@ -25,8 +25,8 @@ class TrieNode
 
 /**
  * 
- * @param {*} raiz		Instancia da @class TrieNode
- * @param {*} chave 		Chave (palavra) de valor do alfabeto a ser inserida
+ * @param {TrieNode} raiz obrigatório instância da classe TrieNode
+ * @param {string} chave obrigatório chave (palavra) de valor do alfabeto a ser inserida
  */
 function inserir(raiz,chave)
 {
