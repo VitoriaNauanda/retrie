@@ -39,7 +39,7 @@ class Trie:
         for c in palavra: #para c dentro da string informada
             if c not in atual.filhos: #se c nao for filho da raiz
                 print(palavra, end=' -> ')
-                return False #nao encontrou a palavra 
+                return "word_not_found" #nao encontrou a palavra 
             atual = atual.filhos[c] #caso pertença a subarvore, percorre ela
             print(c, end=' -> ',)
         return atual.fimDaPalavra
@@ -72,13 +72,20 @@ class Trie:
                 palavraFormada.append(c)
                 return "word_not_found"
         return palavraFormada
+    
+
+
 
 trie = Trie()
 
 print(trie.inserir('abacate'))
 print(trie.inserir('almofada'))
+print(trie.inserir('teste'))
+print(trie.inserir('teste'))
 print(trie.busca('abacate'))
 print(trie.busca('almofada'))
 print(trie.busca('reginaldo'))
+print(trie.startsWith('t'))
+print(trie.startsWith('j'))
 # print(trie.showWord('almofada'))
 # print(trie.startsWith('a'))
