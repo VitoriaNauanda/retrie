@@ -93,9 +93,9 @@ function isVazio(raiz)
  * caso exista.
  *  
  * @param {TrieNode} raiz obrigatório instância da classe TrieNode
- * @param {string} chave obrigatório chave (palavra) de valor do alfabeto a ser buscado
+ * @param {string} chave obrigatório chave (palavra) de valor do alfabeto a ser removido
  * @param {int} profundidade obrigatório valor da profundidade do nó 
- * buscado
+ * a ser removido.
  */
 function remover(raiz,chave,profundidade)
 {
@@ -136,33 +136,37 @@ function remover(raiz,chave,profundidade)
 	return raiz; //`${chave} removida`;//
 }
 
+/*
+Main
+*/ 
+
 // Input utilizando o range do alfabeto (de a - z)
 // e em minusculas para funcionar o ASCII )
 let chaves = [ "teste", "a", "casa",
-				"resposta", "qualquer", "by",
+				"resposta", "qualquer", "garoto",
 				"adeus", "heroi", "aviao" ];
-let n = chaves.length; // tamanho das chaves
+let tamanho = chaves.length; // tamanho das chaves
 
 let raiz = new TrieNode();
+
 // Construindo a trie
-for (let i = 0; i < n; i++)
-inserir(raiz, chaves[i]);
+for (let i = 0; i < tamanho; i++)
+	inserir(raiz, chaves[i]);
 
+
+
+inserir(raiz, "garota");
+
+remover(raiz, "garota", 0);
+
+	
+	
 // buscar por chaves diferentes
-
-
-// console.log(remover(raiz, "heroi", 0))
 console.log(buscar(raiz, "heroi"))
 console.log(buscar(raiz, "aviao"))
-console.log(buscar(raiz, "heri"))
+console.log(buscar(raiz, "garota"))
 
-raiz.destructor();
+
+raiz.destructor();//desalocando memória
 delete raiz; //desalocando memória
 
-
-//caso queiram usar front end web a funcao prompt para entrada de dados do teclado
-// let qtdPalavras = prompt("Insira a quantidade de buscas: \n")
-// for (let c =0; c<=qtdPalavras; c++){
-//     var entrada = prompt("Digite uma palavra: \n")
-//     console.log(buscar(raiz, entrada))
-// }
