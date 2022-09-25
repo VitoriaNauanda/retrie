@@ -5,7 +5,7 @@ function varreTrie(node, index, dadosGrafo) {
 
   dadosGrafo.nodes.push({
     id: dadosGrafo.contador,
-    label: index === null ? '' : String.fromCharCode(index + 'a'.charCodeAt(0)),
+    label: index === null ? '' : "<b>"+String.fromCharCode(index + 'a'.charCodeAt(0))+"</b>",
     color: { background: cores.cream }
   });
 

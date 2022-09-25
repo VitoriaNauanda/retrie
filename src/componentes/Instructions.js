@@ -16,8 +16,9 @@ function Instructions() {
         borderRadius={15}
         bg={'white'}
         fontWeight={'medium'}
-        fontFamily={'Quicksand'}
+        fontFamily={'Nunito'}
         fontSize={14}
+        color={cores.skobeloff}
       >
         <Flex py={2} align={'center'}>
           <Box

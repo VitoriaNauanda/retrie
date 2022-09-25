@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ['Quicksand'],
+        families: ['Nunito'],
       },
     });
   }, []);

@@ -2,7 +2,7 @@ import { extendTheme } from '@chakra-ui/react';
 import { cores } from './cores';
 
 const toastTextOptions = {
-  fontFamily: 'Quicksand',
+  fontFamily: 'Nunito',
   textVerticalAlign: 'center',
   fontSize: 14,
 };

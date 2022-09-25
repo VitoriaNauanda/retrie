@@ -110,8 +110,8 @@ function Painel({ trie, dadosGrafo, setDadosGrafo, onToggle }) {
         <Text
           color={cores.juneBud}
           fontSize={24}
-          fontFamily="Quicksand"
-          fontWeight="semibold"
+          fontFamily="Nunito"
+          fontWeight="medium"
         >
           Retrie
         </Text>
@@ -130,7 +130,7 @@ function Painel({ trie, dadosGrafo, setDadosGrafo, onToggle }) {
         <Text
           textAlign="start"
           textColor={cores.greenMiddle}
-          fontFamily="Quicksand"
+          fontFamily="Nunito"
           fontWeight={'semibold'}
           fontSize={14}
           marginTop={3}
@@ -150,8 +150,8 @@ function Painel({ trie, dadosGrafo, setDadosGrafo, onToggle }) {
           marginTop={3}
           value={entrada}
           onChange={handleChange}
-          fontFamily={'Quicksand'}
-          fontWeight={'semibold'}
+          fontFamily={'Nunito'}
+          fontWeight={'medium'}
           fontSize={14}
           placeholder="Por exemplo, abacaxi"
           _placeholder={{

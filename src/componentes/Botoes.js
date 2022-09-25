@@ -41,7 +41,7 @@ function Botoes({onClickBotao}) {
           
           <Flex flex={"auto"} align={"center"} justify={"flex-start"}>
             <AddIcon mx={8} h={4} w={4} />
-            <Text fontSize={"16px"} fontWeight='semibold' fontFamily={"Quicksand"}>Inserir</Text>
+            <Text fontSize={"16px"} fontWeight='semibold' fontFamily={"Nunito"}>Inserir</Text>
           </Flex>
           <Image src={Imagens.add} w='12vh' />
           
@@ -74,7 +74,7 @@ function Botoes({onClickBotao}) {
 
           <Flex flex={"auto"} align={"center"} justify={"flex-start"}>
             <DeleteIcon mx={8} h={4} w={4} />
-            <Text fontSize={"16px"} fontWeight='semibold' fontFamily={"Quicksand"}>Remover</Text>
+            <Text fontSize={"16px"} fontWeight='semibold' fontFamily={"Nunito"}>Remover</Text>
           </Flex>
           <Image src={Imagens.remove} w='12vh' />
         </Flex>
@@ -105,7 +105,7 @@ function Botoes({onClickBotao}) {
         >
           <Flex flex={"auto"} align={"center"} justify={"flex-start"}>
             <Search2Icon mx={8} h={4} w={4} />
-            <Text fontSize={"16px"} fontWeight='semibold' fontFamily={"Quicksand"}>Buscar</Text>
+            <Text fontSize={"16px"} fontWeight='semibold' fontFamily={"Nunito"}>Buscar</Text>
           </Flex>
           <Image src={Imagens.search} w='12vh' />
         </Flex>

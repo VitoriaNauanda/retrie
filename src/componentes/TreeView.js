@@ -23,7 +23,8 @@ function TreeView({ dadosGrafo }) {
       },
       borderWidth: 2,
       font: {
-        face: 'Quicksand',
+        multi: 'html',
+        face: 'Nunito',
         size: 18,
         color: cores.skobeloff,
       },
