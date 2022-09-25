@@ -5,6 +5,7 @@ import {
   HStack,
   Flex,
   ScaleFade,
+  Center,
 } from '@chakra-ui/react';
 
 import WebFont from 'webfontloader';
@@ -14,6 +15,7 @@ import { customTheme } from './assets/customTheme';
 import Painel from './componentes/Painel';
 import TreeView from './componentes/TreeView';
 import { TrieNode } from './trie/TrieNode';
+import Instructions from './componentes/Instructions';
 
 // Criação da árvore
 let raiz = new TrieNode();
@@ -35,7 +37,7 @@ function App() {
   };
 
   const [dadosGrafo, setDadosGrafo] = useState({ ...grafoInicial });
-  const [ grafoVisivel, onToggle ] = useState(true);
+  const [ grafoVisivel, onToggle ] = useState(false);
 
   return (
     <ChakraProvider theme={customTheme} h={'100%'}>
@@ -57,6 +59,8 @@ function App() {
           />
 
           {/* Componente da direita*/}
+          {TrieNode.arrayValue.key.length === 0? (<Instructions/>) : <></>}
+
           <ScaleFade in={grafoVisivel}>
             <TreeView dadosGrafo={dadosGrafo} />
           </ScaleFade>
