@@ -3,7 +3,7 @@ import {
   Box,
   Flex,
 } from '@chakra-ui/react';
-import { Cores } from '../assets/Cores';
+import { cores } from '../assets/cores';
 
 
 export function viewCard() {
@@ -18,7 +18,7 @@ export function viewCard() {
         borderRadius={10}
         borderWidth="0px"
         textColor={'white'}
-        background={Cores.yellowGreenCrayola}
+        background={cores.yellowGreenCrayola}
         boxShadow="lg"
         p="6"
         rounded="md"
@@ -34,7 +34,7 @@ export function viewCard() {
           width="100%"
           fontSize={15}
           fontWeight="bold"
-          textColor={Cores.middleGreenYellow}
+          textColor={cores.middleGreenYellow}
  
           mb="1"
         >

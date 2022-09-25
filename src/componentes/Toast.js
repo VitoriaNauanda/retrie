@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Cores } from '../assets/Cores';
+import { cores } from '../assets/cores';
 import { Imagens } from '../assets/Imagens';
 import WebFont from 'webfontloader';
 import { Search2Icon, AddIcon, DeleteIcon } from '@chakra-ui/icons'

@@ -8,30 +8,52 @@ import {
   HStack,
   Flex,
 } from '@chakra-ui/react';
-import { Cores } from './assets/Cores';
-import Header from './componentes/Header';
+import WebFont from 'webfontloader';
 
+import { cores } from './assets/cores';
+import Painel from './componentes/Painel';
+import TreeView from './componentes/TreeView';
+import { TrieNode } from './trie/TrieNode';
 
+// Criação da árvore
+let raiz = new TrieNode();
 
 function App() {
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Quicksand'],
+      },
+    });
+  }, []);
+
+  // Estrutura inicial do grafo
+  const grafoInicial = {
+    contador: 0,
+    nodes: [],
+    edges: [],
+  };
+
+  const [dadosGrafo, setDadosGrafo] = useState({ ...grafoInicial });
 
   return (
-    <ChakraProvider theme={theme} h={"100%"}>
-      <Box textAlign="center" fontSize="xl" bgColor={Cores.dark} h="100%">
-          <HStack
-            spacing={0}
-            bgColor={Cores.mintCream}
-            shadow={'2xl'}
-            h="100%"
-          >
-            <Box h="100%" w="30%" borderRadius={40}>
-              {/* Componente da esquerda */}
-              <Header></Header>
-            </Box>
-              {/* Componente da direita*/}
-            
-          </HStack>
-      </Box>
+    <ChakraProvider theme={theme} h={'100%'}>
+      <Flex textAlign="center" fontSize="xl" bgColor={cores.dark} h="100%">
+        <HStack
+          spacing={0}
+          bgColor={cores.mintCream}
+          display={'flex'}
+          shadow={'2xl'}
+          w="100%"
+          h="100%"
+        >
+          {/* Componente da esquerda */}
+          <Painel trie={raiz} dadosGrafo={dadosGrafo} setDadosGrafo={setDadosGrafo} />
+
+          {/* Componente da direita*/}
+          <TreeView dadosGrafo={dadosGrafo} />
+        </HStack>
+      </Flex>
     </ChakraProvider>
   );
 }

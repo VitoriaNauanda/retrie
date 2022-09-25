@@ -1,10 +1,11 @@
-export const Cores = {
-    oxfordBlue: "##09213b",
+export const cores = {
+    oxfordBlue: "#09213b",
     mintCream: "#eff8f7",
     yellowGreenCrayola: "#bee671",
     middleGreenYellow: '#9DBA5A',
-    greenMidle: "#056564",
-    yellowGreemMiddle:"#DAF090",
+    greenMiddle: "#056564",
+    yellowGreenMiddle:"#DAF090",
+    juneBud: "#C7E464",
     cream: "#F1FFC1",
     skobeloff: "#066565",
     white: "#ffffff",

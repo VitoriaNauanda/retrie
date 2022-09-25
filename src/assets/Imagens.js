@@ -1,5 +1,5 @@
-import header from './svg/header.svg'
-import icon from './svg/icon.svg';
+import header from './svg/header-cropped.png'
+import icon from './svg/icon-cropped.png';
 import add from './svg/add.svg';
 import remove from './svg/remove.svg';
 import search from './svg/search.svg';
