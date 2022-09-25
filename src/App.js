@@ -4,7 +4,9 @@ import {
   ChakraProvider,
   HStack,
   Flex,
+  ScaleFade,
 } from '@chakra-ui/react';
+
 import WebFont from 'webfontloader';
 
 import { cores } from './assets/cores';
@@ -33,6 +35,7 @@ function App() {
   };
 
   const [dadosGrafo, setDadosGrafo] = useState({ ...grafoInicial });
+  const [ grafoVisivel, onToggle ] = useState(true);
 
   return (
     <ChakraProvider theme={customTheme} h={'100%'}>
@@ -50,10 +53,13 @@ function App() {
             trie={raiz}
             dadosGrafo={dadosGrafo}
             setDadosGrafo={setDadosGrafo}
+            onToggle={onToggle}
           />
 
           {/* Componente da direita*/}
-          <TreeView dadosGrafo={dadosGrafo} />
+          <ScaleFade in={grafoVisivel}>
+            <TreeView dadosGrafo={dadosGrafo} />
+          </ScaleFade>
         </HStack>
       </Flex>
     </ChakraProvider>

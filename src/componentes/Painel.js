@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { cores } from '../assets/cores';
 import { Imagens } from '../assets/Imagens';
 import {
@@ -15,7 +15,7 @@ import Botoes from './Botoes';
 import geraGrafoTrie from '../trie/geraGrafoTrie';
 import destacaPalavraEncontrada from '../trie/destacaPalavraEncontrada';
 
-function Painel({ trie, dadosGrafo, setDadosGrafo }) {
+function Painel({ trie, dadosGrafo, setDadosGrafo, onToggle }) {
 
   const [entrada, setEntrada] = React.useState('');
   const handleChange = event => setEntrada(event.target.value);
@@ -25,6 +25,10 @@ function Painel({ trie, dadosGrafo, setDadosGrafo }) {
     duration: 9000,
     isClosable: true,
   })
+
+  useEffect(() => {
+    onToggle(true) 
+  },[dadosGrafo])
 
   // Verifica a operação desejada
   const realizaOperacao = operacao => {
@@ -73,7 +77,8 @@ function Painel({ trie, dadosGrafo, setDadosGrafo }) {
           description: 'Palavra '+entrada+' encontrada',
           status: 'success' 
         })
-        setDadosGrafo(destacaPalavraEncontrada(geraGrafoTrie(trie), entrada));
+        onToggle(false)
+        setTimeout(() => setDadosGrafo(destacaPalavraEncontrada(geraGrafoTrie(trie), entrada)), 300);
 
         return;
       }
@@ -85,8 +90,9 @@ function Painel({ trie, dadosGrafo, setDadosGrafo }) {
       })
 
     }
+    onToggle(false)
+    setTimeout(() => setDadosGrafo(geraGrafoTrie(trie), entrada), 300);
 
-    setDadosGrafo(geraGrafoTrie(trie));
   };
 
   return (
