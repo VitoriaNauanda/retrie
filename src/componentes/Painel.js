@@ -10,6 +10,7 @@ import {
   Image,
   Text,
   Flex,
+  useToast
 } from '@chakra-ui/react';
 
 import Botoes from './Botoes';
@@ -22,23 +23,33 @@ function Painel({ trie, dadosGrafo, setDadosGrafo }) {
 
   // Verifica a operação desejada
   const realizaOperacao = operacao => {
-    let novoGrafo = {
-      contador: dadosGrafo.contador,
-      nodes: dadosGrafo.nodes,
-      edges: dadosGrafo.edges,
-    };
+    const toast = useToast();
 
     if (operacao === 'inserir') {
+      if (trie.buscar(trie, entrada)) {
+        alert('Palavra já inserida');
+        toast({title: "aaaa"})
+        return;
+      }
+
       trie.inserir(trie, entrada);
-      console.log(trie);
+      
     } else if (operacao === 'remover') {
+      if (!trie.buscar(trie, entrada)) {
+        alert('Palavra não está na árvore');
+        return;
+      }
+
       trie.remover(trie, entrada, 0);
+
     } else if (operacao === 'buscar') {
       if (trie.buscar(trie, entrada)) {
         setDadosGrafo(destacaPalavraEncontrada(geraGrafoTrie(trie), entrada));
-        console.log("achou")
+        return;
       }
-      return;
+
+      alert('Não encontrado');
+
     }
 
     setDadosGrafo(geraGrafoTrie(trie));

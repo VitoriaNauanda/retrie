@@ -77,12 +77,12 @@ export class TrieNode {
     for (let i = 0; i < chave.length; i++) {
       let index = chave[i].charCodeAt(0) - 'a'.charCodeAt(0);
       if (caminhar.filhos[index] == null)
-        return `Palavra ${chave} não encontrada!`; //false;
+        return false;
 
       caminhar = caminhar.filhos[index];
     }
 
-    return `Palavra ${chave} encontrada`; //(caminhar != null && caminhar.fimDaPalavra);
+    return true; //(caminhar != null && caminhar.fimDaPalavra);
   }
 
   /**

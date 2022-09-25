@@ -7,10 +7,7 @@ import {
   Box,
   Image,
   Text,
-  useToast,
 } from '@chakra-ui/react';
-
-import { useCreateToast } from './Toast';
 
 function Botoes({onClickBotao}) {
 
