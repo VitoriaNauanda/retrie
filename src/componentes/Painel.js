@@ -10,7 +10,6 @@ import {
   Image,
   Text,
   Flex,
-  useToast
 } from '@chakra-ui/react';
 
 import Botoes from './Botoes';
@@ -23,12 +22,10 @@ function Painel({ trie, dadosGrafo, setDadosGrafo }) {
 
   // Verifica a operação desejada
   const realizaOperacao = operacao => {
-    const toast = useToast();
 
     if (operacao === 'inserir') {
       if (trie.buscar(trie, entrada)) {
         alert('Palavra já inserida');
-        toast({title: "aaaa"})
         return;
       }
 
