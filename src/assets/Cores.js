@@ -8,6 +8,7 @@ export const cores = {
     juneBud: "#C7E464",
     cream: "#F1FFC1",
     skobeloff: "#066565",
+    outrageousOrange: "#FF6E4E",
     white: "#ffffff",
     silver: "#C3C3C3",
     dark:"000000"

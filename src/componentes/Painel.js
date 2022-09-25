@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { cores } from '../assets/cores';
 import { Imagens } from '../assets/Imagens';
 import {
-  ChakraProvider,
   Box,
-  Stack,
   Input,
   VStack,
   Image,
   Text,
   Flex,
+  useToast,
 } from '@chakra-ui/react';
 
 import Botoes from './Botoes';
@@ -17,35 +16,73 @@ import geraGrafoTrie from '../trie/geraGrafoTrie';
 import destacaPalavraEncontrada from '../trie/destacaPalavraEncontrada';
 
 function Painel({ trie, dadosGrafo, setDadosGrafo }) {
+
   const [entrada, setEntrada] = React.useState('');
   const handleChange = event => setEntrada(event.target.value);
+
+  const toast = useToast({
+    position: 'bottom-right',
+    duration: 9000,
+    isClosable: true,
+  })
 
   // Verifica a operação desejada
   const realizaOperacao = operacao => {
 
     if (operacao === 'inserir') {
       if (trie.buscar(trie, entrada)) {
-        alert('Palavra já inserida');
+        toast({
+          variant: 'erro',
+          description: 'Palavra '+entrada+' já está na árvore',
+          status: 'warning' 
+        })
         return;
+
       }
 
       trie.inserir(trie, entrada);
+
+      toast({
+        variant: 'sucesso',
+        description: 'Palavra '+entrada+' inserida',
+        status: 'success' 
+      })
       
     } else if (operacao === 'remover') {
       if (!trie.buscar(trie, entrada)) {
-        alert('Palavra não está na árvore');
+        toast({
+          variant: 'erro',
+          description: 'Palavra '+entrada+' não está na árvore',
+          status: 'warning' 
+        })
         return;
       }
 
       trie.remover(trie, entrada, 0);
 
+      toast({
+        variant: 'sucesso',
+        description: 'Palavra '+entrada+' removida',
+        status: 'success' 
+      })
+
     } else if (operacao === 'buscar') {
       if (trie.buscar(trie, entrada)) {
+        toast({
+          variant: 'sucesso',
+          description: 'Palavra '+entrada+' encontrada',
+          status: 'success' 
+        })
         setDadosGrafo(destacaPalavraEncontrada(geraGrafoTrie(trie), entrada));
+
         return;
       }
 
-      alert('Não encontrado');
+      toast({
+        variant: 'erro',
+        description: 'Palavra '+entrada+' não encontrada',
+        status: 'error' 
+      })
 
     }
 
